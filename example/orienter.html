@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>orienter</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <style>
+        img{
+            width: 100%;
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        }
+    </style>
+</head>
+<body>
+<p id="tip"></p>
+<img id="rotateImg" src="google.gif" alt=""/>
+<script src="../orienter.min.js"></script>
+<script>
+    (function(){
+        var o = new Orienter();
+        var tip = document.getElementById('tip');
+        var rotate = document.getElementById('rotateImg')
+        o.handler = function (obj){
+            tip.innerHTML =
+                    'alpha:' + obj.a +
+                    '<br>' + 'beta:' + obj.b +
+                    '<br>' + 'gamma:' + obj.g +
+                    '<br>' + 'longitude:' + obj.lon +
+                    '<br>' + 'latitude:' + obj.lat +
+                    '<br>' + 'direction:' + obj.dir;
+            rotate.style.transform =
+                    'rotateX('+ -obj.lat +'deg) ' +
+                    'rotateY('+ -obj.lon +'deg) ' +
+                    'rotateZ(0deg)'
+        }
+        o.init();
+    })()
+</script>
+</body>
+</html>
